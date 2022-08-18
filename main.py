@@ -7,10 +7,12 @@ from car.serializers import CarSerializer
 
 def serialize_car_object(car: Car) -> bytes:
     serializer = CarSerializer(car)
-    return JSONRenderer().render(serializer.data)
+    if serializer.is_valid():
+        return JSONRenderer().render(serializer.data)
 
 
 def deserialize_car_object(json: bytes) -> Car:
     data = JSONParser().parse(json)
     serializer = CarSerializer(data=data)
-    return serializer.validated_data
+    if serializer.is_valid():
+        return serializer.validated_data
