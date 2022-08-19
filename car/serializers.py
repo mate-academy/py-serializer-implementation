@@ -10,12 +10,7 @@ class CarSerializer(serializers.Serializer):
     model = serializers.CharField(max_length=64, required=True)
     horse_powers = serializers.IntegerField(validators=[MaxValueValidator(1914), MinValueValidator(1)], required=True)
     is_broken = serializers.BooleanField(required=True)
-    problem_description = serializers.CharField(allow_null=True, allow_blank=True)
-
-    def validate(self, attrs):
-        if not attrs["id"]:
-            raise serializers.ValidationError('Missing id!')
-        return attrs
+    problem_description = serializers.CharField(required=False)
 
     def create(self, validated_data):
         return Car.objects.create(**validated_data)
