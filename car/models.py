@@ -8,8 +8,8 @@ class Car(models.Model):
     horse_powers = models.PositiveSmallIntegerField(
         validators=[MaxValueValidator(1914), MinValueValidator(1)]
     )
-    is_broken = models.BooleanField()
-    problem_description = models.TextField(null=True, blank=True)
+    is_broken = models.BooleanField(default=False)
+    problem_description = models.TextField(default=None, null=True, blank=True)
 
     def __str__(self):
         return f"{self.manufacturer}, {self.model}"
