@@ -21,4 +21,3 @@ def deserialize_car_object(json: bytes) -> Car:
         raise ValidationError("Oshibochka")
     car = serializer.save()
     return car
-
