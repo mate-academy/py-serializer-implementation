@@ -4,6 +4,7 @@ from .models import Car
 
 
 class CarSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
     manufacturer = serializers.CharField(required=True, max_length=64)
     model = serializers.CharField(required=True, max_length=64)
     horse_powers = serializers.IntegerField(
