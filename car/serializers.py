@@ -1,8 +1,4 @@
-import io
-
 from rest_framework import serializers
-from rest_framework.parsers import JSONParser
-from rest_framework.renderers import JSONRenderer
 
 from car.models import Car
 
@@ -36,18 +32,3 @@ class CarSerializer(serializers.Serializer):
         )
         instance.save()
         return instance
-
-
-def serialize_car_object(car):
-    serializer = CarSerializer(car)
-    content = JSONRenderer().render(serializer.data)
-    return content
-
-
-def deserialize_car_object(content):
-    stream = io.BytesIO(content)
-    data = JSONParser().parse(stream)
-    serializer = CarSerializer(data=data)
-    if serializer.is_valid():
-        serializer.save()
-    return serializer
