@@ -49,6 +49,6 @@ def car_detail(request, pk):
         return Response(serializer.errors,
                         status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
+    elif request.method == "DELETE":
         cars.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

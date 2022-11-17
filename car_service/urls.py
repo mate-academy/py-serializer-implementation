@@ -18,8 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/car/", include(
-        "car.urls",
-        namespace="car")
-         )
+    path(
+        "api/car/", include("car.urls", namespace="car")
+    )
 ]
