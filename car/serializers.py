@@ -7,13 +7,13 @@ from rest_framework.renderers import JSONRenderer
 from car.models import Car
 
 
-class CarSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Car
-        fields = [
-            "id", "manufacturer", "model",
-            "horse_powers", "is_broken", "problem_description"
-        ]
+class CarSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    manufacturer = serializers.CharField()
+    model = serializers.CharField()
+    horse_powers = serializers.IntegerField()
+    is_broken = serializers.BooleanField()
+    problem_description = serializers.CharField()
 
     def create(self, validated_data):
         return Car.objects.create(**validated_data)
@@ -51,3 +51,4 @@ def deserialize_car_object(content):
     if serializer.is_valid():
         serializer.save()
     return serializer
+
