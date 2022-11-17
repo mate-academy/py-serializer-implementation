@@ -51,4 +51,3 @@ def deserialize_car_object(content):
     if serializer.is_valid():
         serializer.save()
     return serializer
-
