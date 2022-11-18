@@ -11,7 +11,8 @@ class CarSerializer(serializers.Serializer):
     horse_powers = serializers.IntegerField(
         validators=[MaxValueValidator(1914), MinValueValidator(1)])
     is_broken = serializers.BooleanField()
-    problem_description = serializers.CharField(allow_blank=True, required=False)
+    problem_description = serializers.CharField(
+        allow_blank=True, required=False)
 
     def create(self, validated_data):
         return Car.objects.create(**validated_data)
