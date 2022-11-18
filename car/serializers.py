@@ -11,26 +11,21 @@ class CarSerializer(serializers.Serializer):
     horse_powers = serializers.IntegerField(
         validators=[MaxValueValidator(1914), MinValueValidator(1)])
     is_broken = serializers.BooleanField()
-    problem_description = serializers.CharField()
+    problem_description = serializers.CharField(allow_blank=True, required=False)
 
     def create(self, validated_data):
         return Car.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.title = validated_data.get(
-            "manufacturer", instance.title
-        )
-        instance.description = validated_data.get(
-            "model", instance.description
-        )
-        instance.duration = validated_data.get(
-            "horse_powers", instance.duration
-        )
-        instance.duration = validated_data.get(
-            "is_broken", instance.duration
-        )
-        instance.duration = validated_data.get(
-            "problem_description", instance.duration
-        )
+        instance.manufacturer = validated_data.get(
+            "manufacturer", instance.manufacturer)
+        instance.model = validated_data.get(
+            "model", instance.model)
+        instance.horse_powers = validated_data.get(
+            "horse_powers", instance.horse_powers)
+        instance.is_broken = validated_data.get(
+            "is_broken", instance.is_broken)
+        instance.problem_description = validated_data.get(
+            "problem_description", instance.problem_description)
         instance.save()
         return instance
