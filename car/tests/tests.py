@@ -93,7 +93,7 @@ class TestSerializerFunctions(TestCase):
         car = Car(**self.payload)
         result = '{"id":1,"manufacturer":"Audi","model":"A4","horse_powers":200,' \
                  '"is_broken":true,"problem_description":"test description"}'
-
+        print(serialize_car_object(car=car))
         self.assertEqual(serialize_car_object(car=car), bytes(result, "utf-8"))
 
     def test_deserialize_car(self):
