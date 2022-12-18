@@ -12,7 +12,7 @@ class CarSerializer(serializers.Serializer):
     problem_description = serializers.CharField(
         max_length=255,
         allow_null=True,
-        allow_blank=True
+        required=False,
     )
 
     def create(self, validated_data):

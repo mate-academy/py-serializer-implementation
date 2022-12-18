@@ -7,13 +7,7 @@ from car.serializers import CarSerializer
 
 
 def serialize_car_object(car: Car) -> bytes:
-    porsche = Car.objects.create(
-        manufacturer="Porsche",
-        model="Cayenne",
-        horse_powers=434,
-        is_broken=False,
-    )
-    serializer = CarSerializer(porsche)
+    serializer = CarSerializer(car)
     json = JSONRenderer().render(serializer.data)
     return json
 
