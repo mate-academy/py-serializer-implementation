@@ -36,4 +36,3 @@ class CarSerializer(serializers.Serializer):
         )
         instance.save()
         return instance
-
