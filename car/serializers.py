@@ -1,5 +1,4 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db.models import PositiveSmallIntegerField
 from rest_framework import serializers
 
 from car.models import Car
