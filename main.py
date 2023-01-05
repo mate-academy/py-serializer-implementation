@@ -7,8 +7,7 @@ from rest_framework.parsers import JSONParser
 
 def serialize_car_object(car: Car) -> bytes:
     serializer = CarSerializer(Car)
-    json = JSONRenderer().render(serializer.data)
-    return json
+    return JSONRenderer().render(serializer.data)
 
 
 def deserialize_car_object(json: bytes) -> Car:
