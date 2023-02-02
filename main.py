@@ -8,12 +8,14 @@ from car.serializers import CarSerializer
 
 def serialize_car_object(car: Car) -> bytes:
     serializer = CarSerializer(car)
-    if serializer.is_valid():
-        json = JSONRenderer().render(serializer.data)
-        return json
+    json = JSONRenderer().render(serializer.data)
+    return json
 
 
 def deserialize_car_object(json: bytes) -> Car:
-    serializer = CarSerializer(json)
-    data = JSONParser().parse(serializer)
-    return data
+    stream = io.BytesIO(json)
+    data = JSONParser().parse(stream)
+    serializer = CarSerializer(data=data)
+    if serializer.is_valid():
+        serializer.save()
+        return serializer.instance
