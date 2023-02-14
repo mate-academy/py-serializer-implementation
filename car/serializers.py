@@ -12,15 +12,10 @@ class CarSerializer(serializers.Serializer):
     problem_description = serializers.CharField(required=False)
 
     def create(self, validated_data):
-        """
-        Create and return a new `Snippet` instance, given the validated data.
-        """
         return Car.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        """
-        Update and return an existing `Snippet` instance, given the validated data.
-        """
+
         instance.manufacturer = validated_data.get(
             "manufacturer", instance.manufacturer
         )
@@ -28,7 +23,9 @@ class CarSerializer(serializers.Serializer):
         instance.horse_powers = validated_data.get(
             "horse_powers", instance.horse_powers
         )
-        instance.is_broken = validated_data.get("is_broken", instance.is_broken)
+        instance.is_broken = validated_data.get(
+            "is_broken", instance.is_broken
+        )
         instance.problem_description = validated_data.get(
             "problem_description", instance.problem_description
         )
