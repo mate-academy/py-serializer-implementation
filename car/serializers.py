@@ -14,10 +14,10 @@ class CarSerializer(serializers.Serializer):
         required=False, style={"type": "textarea"}
     )
 
-    def create(self, validated_data):
+    def create(self, validated_data: dict) -> Car:
         return Car.objects.create(**validated_data)
 
-    def update(self, instance, validated_data):
+    def update(self, instance: Car, validated_data: dict) -> Car:
         instance.manufacturer = validated_data.get(
             "manufacturer", instance.manufacturer
         )
