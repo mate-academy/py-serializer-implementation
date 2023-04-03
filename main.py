@@ -17,5 +17,6 @@ def deserialize_car_object(json_car: bytes) -> Car | ValidationError:
     car_dict = JSONParser().parse(car_steam)
     car_serializer = CarSerializer(data=car_dict)
     if car_serializer.is_valid():
-        return Car(**car_dict)
+        return Car(**car_serializer.data)
     return ValidationError("error")
+
