@@ -5,6 +5,7 @@ from car.models import Car
 
 class CarSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
+    manufacturer = serializers.CharField(required=True)
     model = serializers.CharField(required=True)
     horse_powers = serializers.IntegerField(required=True)
     is_broken = serializers.BooleanField()
@@ -14,6 +15,7 @@ class CarSerializer(serializers.Serializer):
         return Car.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
+        instance.manufacturer = validated_data.get("manufacturer", instance.manufacturer)
         instance.model = validated_data.get("model", instance.model)
 
         instance.horse_power = validated_data.get(
