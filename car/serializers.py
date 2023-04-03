@@ -3,12 +3,9 @@ from rest_framework import serializers
 from car.models import Car
 
 
-class CarSerializer(serializers.Serializer):
-    manufacturer = serializers.CharField(max_length=64)
-    model = serializers.CharField(max_length=64)
-    horse_powers = serializers.IntegerField()
-    is_broken = serializers.BooleanField()
-    problem_description = serializers.CharField(required=False)
+class CarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Car
 
     def create(self, validated_data):
         return Car.objects.create(**validated_data)
@@ -21,7 +18,7 @@ class CarSerializer(serializers.Serializer):
         instance.model = validated_data.get("model", instance.model)
         instance.horse_powers = validated_data.get(
             "horse_powers",
-            instance.horse_powers
+            instance.horse_powers,
         )
         instance.is_broken = validated_data.get(
             "is_broken",
