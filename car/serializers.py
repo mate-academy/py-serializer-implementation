@@ -5,10 +5,10 @@ from car.models import Car
 
 class CarSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    manufacturer = serializers.CharField(required=True)
-    model = serializers.IntegerField(required=True)
-    horse_powers = serializers.IntegerField(required=True)
-    is_broken = serializers.BooleanField(required=True)
+    manufacturer = serializers.CharField()
+    model = serializers.IntegerField()
+    horse_powers = serializers.IntegerField()
+    is_broken = serializers.BooleanField()
     problem_description = serializers.CharField(required=False)
 
     def create(self, validated_data):

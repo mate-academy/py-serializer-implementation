@@ -1,6 +1,5 @@
 import io
 
-from django.core.exceptions import ValidationError
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
 
@@ -18,4 +17,4 @@ def deserialize_car_object(json: bytes) -> Car:
     serializer = CarSerializer(data=data)
     if serializer.is_valid():
         return Car.objects.create(**serializer.validated_data)
-    return ValidationError("data error")
+
