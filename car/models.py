@@ -9,7 +9,11 @@ class Car(models.Model):
         validators=[MaxValueValidator(1914), MinValueValidator(1)]
     )
     is_broken = models.BooleanField()
-    problem_description = models.TextField(null=True, blank=True)
+    problem_description = models.TextField(
+        required=False,
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
         return f"{self.manufacturer}, {self.model}"
