@@ -10,7 +10,6 @@ class Car(models.Model):
     )
     is_broken = models.BooleanField()
     problem_description = models.TextField(
-        required=False,
         null=True,
         blank=True
     )
