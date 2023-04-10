@@ -1,5 +1,4 @@
 import json
-from rest_framework import serializers
 from rest_framework.renderers import JSONRenderer
 from car.models import Car
 from car.serializers import CarSerializer
