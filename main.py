@@ -14,4 +14,6 @@ def deserialize_car_object(json: bytes) -> Car:
         car = serializer.save()
         return car
     else:
-        raise serializers.ValidationError("Invalid data provided for deserialization")
+        raise serializers.ValidationError(
+            "Invalid data provided for deserialization"
+        )
