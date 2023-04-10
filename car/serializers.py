@@ -1,6 +1,4 @@
 from rest_framework import serializers
-from rest_framework.utils import json
-
 from car.models import Car
 
 
@@ -41,8 +39,3 @@ class CarSerializer(serializers.Serializer):
         )
         instance.save()
         return instance
-
-    def to_representation(self, instance):
-        rep = super().to_representation(instance)
-        json_string = json.dumps(rep)
-        return json_string.encode("utf-8")
