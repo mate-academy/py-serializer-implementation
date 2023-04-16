@@ -33,4 +33,8 @@ if __name__ == "__main__":
     print(serialized_car)
 
     deserialized_car = deserialize_car_object(serialized_car)
-    print(deserialized_car.manufacturer, deserialized_car.model, deserialized_car.horse_powers)
+    print(
+        deserialized_car.manufacturer,
+        deserialized_car.model,
+        deserialized_car.horse_powers
+    )

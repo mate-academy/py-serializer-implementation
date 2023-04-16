@@ -19,6 +19,7 @@ def car_list(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
 @api_view(["GET", "PUT", "DELETE"])
 def car_detail(request, pk):
     car = Car.objects.get(pk=pk)
