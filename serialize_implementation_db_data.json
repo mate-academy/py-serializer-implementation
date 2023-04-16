@@ -1,0 +1,24 @@
+[
+  {
+    "model": "car.car",
+    "pk": 1,
+    "fields": {
+      "manufacturer": "Ford",
+      "model": "Boston",
+      "horse_powers": 151,
+      "is_broken": "False",
+      "problem_description": ""
+    }
+  },
+  {
+    "model": "car.car",
+    "pk": 2,
+    "fields": {
+      "manufacturer": "Fiat",
+      "model": "Brava",
+      "horse_powers": 120,
+      "is_broken": "True",
+      "problem_description": "some issue"
+    }
+  }
+ ]
