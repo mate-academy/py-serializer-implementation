@@ -31,4 +31,3 @@ class CarSerializer(serializers.Serializer):
         instance.problem_description = validated_data.get(
             "problem_description", instance.problem_description
         )
-
