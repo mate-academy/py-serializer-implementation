@@ -13,9 +13,9 @@ def serialize_car_object(car: Car) -> bytes:
 
 
 def deserialize_car_object(json: bytes) -> Car:
-    byte = io.BytesIO(json)
-    info = JSONParser().parse(byte)
-    serializer = CarSerializer(data=info)
+    stream = io.BytesIO(json)
+    data = JSONParser().parse(stream)
+    serializer = CarSerializer(data=data)
 
     if serializer.is_valid():
         new_car = serializer.save()
