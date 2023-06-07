@@ -5,21 +5,22 @@ from car.models import Car
 
 
 class CarSerializer(serializers.Serializer):
-    manufacturer = serializers.CharField(
-        max_length=64, required=True
-    )
-    model = serializers.CharField(max_length=64, required=True)
+    id = serializers.IntegerField(read_only=True)
+    manufacturer = serializers.CharField(max_length=64)
+    model = serializers.CharField(max_length=64)
     horse_powers = serializers.IntegerField(
-        required=True,
         validators=[MaxValueValidator(1914), MinValueValidator(1)]
     )
-    is_broken = serializers.BooleanField(required=False)
-    problem_description = serializers.CharField(required=False)
+    is_broken = serializers.BooleanField()
+    problem_description = serializers.CharField(
+        allow_null=True,
+        required=False
+    )
 
     def create(self, validated_data):
         return Car.objects.create(**validated_data)
 
-    def update(self, instance, validated_data):
+    def update(self, instance: Car, validated_data):
         instance.manufacturer = validated_data.get(
             "manufacturer", instance.manufacturer
         )
