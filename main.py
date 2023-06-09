@@ -1,4 +1,4 @@
-import init_django_orm # noqa: F401
+import init_django_orm  # noqa: F401
 import io
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
@@ -32,4 +32,3 @@ if __name__ == "__main__":
     json_data = serialize_car_object(car)
 
     print(deserialize_car_object(json_data))
-
