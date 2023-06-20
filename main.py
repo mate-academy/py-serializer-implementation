@@ -1,9 +1,25 @@
+from django.core.exceptions import ValidationError
+
 from car.models import Car
+from car.serializers import CarSerializer
+from rest_framework.renderers import JSONRenderer
+import io
+from rest_framework.parsers import JSONParser
 
 
 def serialize_car_object(car: Car) -> bytes:
-    pass
+    serializer = CarSerializer(car)
+    json = JSONRenderer().render(serializer.data)
+
+    return json
 
 
 def deserialize_car_object(json: bytes) -> Car:
-    pass
+    stream = io.BytesIO(json)
+    data = JSONParser().parse(stream)
+    serializer = CarSerializer(data=data)
+
+    if serializer.is_valid():
+        return serializer.save()
+    else:
+        raise ValidationError(serializer.errors)
