@@ -30,4 +30,3 @@ class CarSerializer(serializers.Serializer):
             "problem_description", instance.problem_description)
         instance.save()
         return instance
-
