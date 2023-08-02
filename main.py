@@ -9,7 +9,7 @@ from car.serializers import CarSerializer
 
 def serialize_car_object(car: Car) -> bytes:
     serializer = CarSerializer(car)
-    json = JSONRenderer.render(serializer.data)
+    json = JSONRenderer().render(data=serializer.data)
     return json
 
 
