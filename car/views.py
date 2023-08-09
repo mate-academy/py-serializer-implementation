@@ -18,5 +18,5 @@ def cars_list(request) -> Response:
 @api_view(["GET"])
 def car_detail(request, pk) -> Response:
     car = get_object_or_404(Car, pk=pk)
-    serializer = CarSerializer(car)
+    serializer = CarSerializer(car, context={"request": request})
     return Response(serializer.data, status.HTTP_200_OK)
