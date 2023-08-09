@@ -6,7 +6,6 @@ from car.serializers import CarSerializer
 
 
 class TestSerializer(TestCase):
-
     def setUp(self) -> None:
         self.payload = {
             "id": 1,
@@ -58,8 +57,14 @@ class TestSerializer(TestCase):
 
     def test_fields_max_length(self):
         items = [
-            ("manufacturer", "Extremely long test manufacturer Extremely long test manufacturer"),
-            ("model", "Extremely long test model Extremely long test model Extremely long test model")
+            (
+                "manufacturer",
+                "Extremely long test manufacturer Extremely long test manufacturer",
+            ),
+            (
+                "model",
+                "Extremely long test model Extremely long test model Extremely long test model",
+            ),
         ]
 
         for item in items:
@@ -78,7 +83,6 @@ class TestSerializer(TestCase):
 
 
 class TestSerializerFunctions(TestCase):
-
     def setUp(self) -> None:
         self.payload = {
             "id": 1,
@@ -91,14 +95,17 @@ class TestSerializerFunctions(TestCase):
 
     def test_serialize_car(self):
         car = Car(**self.payload)
-        result = '{"id":1,"manufacturer":"Audi","model":"A4","horse_powers":200,' \
-                 '"is_broken":true,"problem_description":"test description"}'
-
+        result = (
+            '{"id":1,"manufacturer":"Audi","model":"A4","horse_powers":200,'
+            '"is_broken":true,"problem_description":"test description"}'
+        )
         self.assertEqual(serialize_car_object(car=car), bytes(result, "utf-8"))
 
     def test_deserialize_car(self):
-        json = b'{"id":1,"manufacturer":"Audi","model":"A4",' \
-                    b'"horse_powers":200,"is_broken":true,"problem_description":"test description"}'
+        json = (
+            b'{"id":1,"manufacturer":"Audi","model":"A4",'
+            b'"horse_powers":200,"is_broken":true,"problem_description":"test description"}'
+        )
 
         car = deserialize_car_object(json)
 
