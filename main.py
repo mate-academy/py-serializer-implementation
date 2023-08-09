@@ -12,7 +12,7 @@ def serialize_car_object(car: Car) -> bytes:
 
 
 def deserialize_car_object(json_data: bytes) -> Car:
-    deserialized_json = json_data.decode('utf-8')
+    deserialized_json = json_data.decode("utf-8")
     data = json.loads(deserialized_json)
     serializer = CarSerializer(data=data)
     serializer.is_valid(raise_exception=True)
