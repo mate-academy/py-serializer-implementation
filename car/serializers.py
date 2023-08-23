@@ -1,6 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
-from models import Car
 from rest_framework import serializers
+
+from .models import Car
 
 
 class CarSerializer(serializers.Serializer):
