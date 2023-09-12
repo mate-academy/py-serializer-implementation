@@ -1,15 +1,20 @@
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
+import io
 
 from car.models import Car
 from car.serializers import CarSerializer
 
 
 def serialize_car_object(car: Car) -> bytes:
-    serializer = CarSerializer(Car)
-    return JSONRenderer.render(data=serializer.data)
+    serializer = CarSerializer(car)
+    return JSONRenderer().render(serializer.data)
 
 
 def deserialize_car_object(json: bytes) -> Car:
-    data = JSONParser.parse(json)
-    return data
+    stream = io.BytesIO(json)
+    data = JSONParser().parse(stream)
+    serializer = CarSerializer(data=data)
+    if serializer.is_valid():
+        car = serializer.save()
+        return car
