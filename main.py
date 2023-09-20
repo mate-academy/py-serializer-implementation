@@ -1,5 +1,5 @@
 import io
-import init_django_orm # noqa: F401
+import init_django_orm  # noqa: F401
 
 from car.models import Car
 from car.serializers import CarSerializer
@@ -18,5 +18,5 @@ def deserialize_car_object(json: bytes) -> Car:
     data = JSONParser().parse(stream)
     serializer = CarSerializer(data=data)
     serializer.is_valid(raise_exception=True)
-    car = Car(**serializer.validated_data)
+    car = serializer.save()
     return car
