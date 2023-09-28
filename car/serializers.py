@@ -7,7 +7,8 @@ from car.models import Car
 class CarSerializer(serializers.Serializer):
     manufacturer = serializers.CharField(max_length=64)
     model = serializers.CharField(max_length=64)
-    horse_powers = serializers.IntegerField(validators=[MaxValueValidator(1914), MinValueValidator(1)])
+    horse_powers = serializers.IntegerField(
+        validators=[MaxValueValidator(1914), MinValueValidator(1)])
     is_broken = serializers.BooleanField()
     problem_description = serializers.CharField(
         required=False)
