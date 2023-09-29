@@ -24,4 +24,3 @@ def deserialize_car_object(json: bytes) -> Car:
     serializer.validated_data
 
     return serializer.save()
-
