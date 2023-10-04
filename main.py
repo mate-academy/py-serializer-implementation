@@ -18,6 +18,5 @@ def deserialize_car_object(json: bytes) -> Car:
     data = JSONParser().parse(stream)
     serializer = CarSerializer(data=data)
     if serializer.is_valid():
-        serializer.save()
-        return serializer.validated_data
+        return serializer.save()
     raise TypeError
