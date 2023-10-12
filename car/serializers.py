@@ -14,10 +14,10 @@ class CarSerializer(serializers.Serializer):
         allow_blank=True
     )
 
-    def create(self, validated_data):
+    def create(self, validated_data) -> Car:
         return Car.objects.create(**validated_data)
 
-    def update(self, instance, validated_data):
+    def update(self, instance, validated_data) -> Car:
         instance.manufacturer = validated_data.get("manufacturer", instance.manufacturer)
         instance.model = validated_data.get("model", instance.model)
         instance.horse_powers = validated_data.get("horse_powers", instance.horse_powers)
