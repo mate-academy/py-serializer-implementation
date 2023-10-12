@@ -11,5 +11,5 @@ class Car(models.Model):
     is_broken = models.BooleanField()
     problem_description = models.TextField(null=True, blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.manufacturer}, {self.model}"
