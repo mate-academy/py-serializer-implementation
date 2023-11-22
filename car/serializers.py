@@ -12,7 +12,7 @@ class CarSerializer(serializers.Serializer):
     problem_description = serializers.CharField(
         required=False,
         allow_blank=True,
-        allow_null=True
+        allow_null=True,
     )
 
     def create(self, validated_data):
@@ -23,7 +23,7 @@ class CarSerializer(serializers.Serializer):
             "manufacturer",
             instance.manufacurer
         )
-        instance.manufamodelcurer = validated_data.get("model", instance.model)
+        instance.model = validated_data.get("model", instance.model)
         instance.horse_powers = validated_data.get(
             "horse_powers",
             instance.horse_powers
