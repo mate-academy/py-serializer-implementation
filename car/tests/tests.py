@@ -106,3 +106,4 @@ class TestSerializerFunctions(TestCase):
             with self.subTest(field):
                 self.assertEqual(getattr(car, field), self.payload[field])
         self.assertIsInstance(car, Car)
+
