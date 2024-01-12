@@ -12,4 +12,4 @@ class Car(models.Model):
     problem_description = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.manufacturer}, {self.model}"
+        return f"{self.id} {self.manufacturer}, {self.model}"

@@ -14,14 +14,15 @@ def serialize_car_object(car: Car) -> bytes:
 def deserialize_car_object(json: bytes) -> CarSerializer:
     stream = io.BytesIO(json)
     data = JSONParser().parse(stream)
+
     serializer = CarSerializer(data=data)
-    serializer.is_valid()
+    serializer.is_valid(raise_exception=True)
     return serializer.save()
 
 
 print(serialize_car_object(Car.objects.create(
-    manufacturer="Porsche",
-    model="Panamera",
+    manufacturer="BMW",
+    model="X5",
     horse_powers=1234,
     is_broken=False,
 )))
