@@ -18,11 +18,3 @@ def deserialize_car_object(json: bytes) -> CarSerializer:
     serializer = CarSerializer(data=data)
     serializer.is_valid(raise_exception=True)
     return serializer.save()
-
-
-print(serialize_car_object(Car.objects.create(
-    manufacturer="BMW",
-    model="X5",
-    horse_powers=1234,
-    is_broken=False,
-)))
