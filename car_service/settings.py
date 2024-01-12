@@ -56,7 +56,7 @@ ROOT_URLCONF = "car_service.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / 'test_db.sqlite3'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
