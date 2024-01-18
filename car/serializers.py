@@ -4,12 +4,12 @@ from car.models import Car
 
 
 class CarSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
+    id = serializers.IntegerField(read_only=True)
     manufacturer = serializers.CharField(max_length=64)
     model = serializers.CharField(max_length=64)
     horse_powers = serializers.IntegerField(min_value=100, max_value=300)
     is_broken = serializers.BooleanField()
-    problem_description = serializers.CharField(allow_null=True, allow_blank=True, required=False)
+    problem_description = serializers.CharField(required=False)
 
     def create(self, validated_data):
         return Car.objects.create(**validated_data)
@@ -32,7 +32,10 @@ class CarSerializer(serializers.Serializer):
             instance.is_broken
         )
 
-        instance.problem_description = validated_data.get("problem_description", None)
+        instance.problem_description = validated_data.get(
+            "problem_description",
+            instance.problem_description
+        )
 
         instance.save()
         return instance
