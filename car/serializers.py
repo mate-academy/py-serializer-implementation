@@ -35,5 +35,6 @@ class CarSerializer(serializers.Serializer):
             "problem_description",
             instance.problem_description
         )
+        validated_data.is_valid(raise_exception=True)
         instance.save()
         return instance
