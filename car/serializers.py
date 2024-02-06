@@ -11,7 +11,6 @@ class CarSerializer(serializers.Serializer):
     is_broken = serializers.BooleanField()
     problem_description = serializers.CharField(
         max_length=255,
-        blank=True,
         null=True
     )
 
