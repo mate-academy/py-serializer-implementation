@@ -5,8 +5,8 @@ import io
 from rest_framework.parsers import JSONParser
 
 
-def serialize_car_object(car_object: Car) -> bytes:
-    serializer = CarSerializer(car_object)
+def serialize_car_object(car: Car) -> bytes:
+    serializer = CarSerializer(car)
     return JSONRenderer().render(serializer.data)
 
 
@@ -15,4 +15,5 @@ def deserialize_car_object(json: bytes) -> Car:
     data = JSONParser().parse(stream)
     serializer = CarSerializer(data=data)
     serializer.is_valid(raise_exception=True)
-    return serializer.validated_data
+    return Car.objects.create(**serializer.validated_data)
+
