@@ -11,8 +11,8 @@ def serialize_car_object(car: Car) -> bytes:
     return json_data.encode()
 
 
-def deserialize_car_object(json: bytes) -> Car:
-    json_str = json.decode()
+def deserialize_car_object(json_bytes: bytes) -> Car:
+    json_str = json_bytes.decode()
     data_json_str = json.loads(json_str)
     car_serializer = CarSerializer(data=data_json_str)
     if car_serializer.is_valid():
