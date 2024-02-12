@@ -1,6 +1,5 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from rest_framework import serializers
-from rest_framework.validators import UniqueValidator
 
 from car.models import Car
 

@@ -1,11 +1,3 @@
-import os
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'car_service.settings')
-
-import django
-
-django.setup()
-
 from car.models import Car
 from car.serializers import CarSerializer
 from rest_framework.renderers import JSONRenderer
@@ -24,20 +16,3 @@ def deserialize_car_object(json: bytes) -> Car:
     serializer = CarSerializer(data=data)
     serializer.is_valid(raise_exception=True)
     return serializer.validated_data
-
-
-if __name__ == "__main__":
-    car = Car.objects.create(
-        manufacturer="Tesla",
-        model="X",
-        horse_powers=800,
-        is_broken=False,
-        problem_description="NO PROBLEMS"
-    )
-    print(car)
-
-    serialized_car = serialize_car_object(car)
-    print(serialized_car)
-
-    deserialized_car = deserialize_car_object(serialized_car)
-    print(deserialized_car)
