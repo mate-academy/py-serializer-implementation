@@ -12,7 +12,7 @@ class CarSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     manufacturer = serializers.CharField(validators=[MaxLengthValidator(64)])
     model = serializers.CharField(validators=[MaxLengthValidator(64)])
-    horsepower = serializers.FloatField(
+    horse_powers = serializers.FloatField(
         validators=[MaxValueValidator(1000), MinValueValidator(0)]
     )
     is_broken = serializers.BooleanField()
