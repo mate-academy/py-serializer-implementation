@@ -12,11 +12,11 @@ class CarSerializer(serializers.Serializer):
     problem_description = serializers.CharField(required=False)
 
     def validate(self, attrs):
-        if attrs.get('horse_powers') < 1:
+        if attrs.get("horse_powers") < 1:
             raise serializers.ValidationError(
                 "Horse powers cannot be less than 1"
             )
-        if attrs.get('horse_powers') > 1914:
+        if attrs.get("horse_powers") > 1914:
             raise serializers.ValidationError(
                 "Horse powers cannot be higher than 1914"
             )
@@ -27,19 +27,19 @@ class CarSerializer(serializers.Serializer):
 
     def update(self, instance, validated_data):
         instance.manufacturer = validated_data.get(
-            'manufacturer', instance.manufacturer
+            "manufacturer", instance.manufacturer
         )
         instance.model = validated_data.get(
-            'model', instance.model
+            "model", instance.model
         )
         instance.horse_powers = validated_data.get(
-            'horse_powers', instance.horse_powers
+            "horse_powers", instance.horse_powers
         )
         instance.is_broken = validated_data.get(
-            'is_broken', instance.is_broken
+            "is_broken", instance.is_broken
         )
         instance.problem_description = validated_data.get(
-            'problem_description', instance.problem_description
+            "problem_description", instance.problem_description
         )
         instance.save()
         return instance
