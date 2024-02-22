@@ -12,5 +12,3 @@ urlpatterns = [
 ]
 
 app_name = "car"
-
-
