@@ -11,10 +11,10 @@ class CarSerializer(serializers.Serializer):
     is_broken = serializers.BooleanField(default=False)
     problem_description = serializers.CharField(required=False)
 
-    def create(self, validated_data):
+    def create(self, validated_data) -> Car:
         return Car.objects.create(**validated_data)
 
-    def update(self, instance, validated_data):
+    def update(self, instance, validated_data) -> Car:
         instance.manufacturer = validated_data.get(
             "manufacturer",
             instance.manufacturer
