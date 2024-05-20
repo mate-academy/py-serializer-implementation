@@ -98,7 +98,7 @@ class TestSerializerFunctions(TestCase):
 
     def test_deserialize_car(self):
         json = b'{"id":1,"manufacturer":"Audi","model":"A4",' \
-                    b'"horse_powers":200,"is_broken":true,"problem_description":"test description"}'
+               b'"horse_powers":200,"is_broken":true,"problem_description":"test description"}'
 
         car = deserialize_car_object(json)
 
