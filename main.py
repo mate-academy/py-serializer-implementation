@@ -5,6 +5,7 @@ from car.serializers import CarSerializer
 from car.models import Car
 
 
+#
 def serialize_car_object(car: Car) -> bytes:
     serializer = CarSerializer(car)
     return JSONRenderer().render(serializer.data)
