@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from car.serializers import CarSerializer
 from car.models import Car
 
+
 def serialize_car_object(car: Car):
     serializer = CarSerializer(instance=car)
     return JsonResponse(serializer.data)
