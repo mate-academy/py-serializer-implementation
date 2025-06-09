@@ -15,9 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from car.views import deserialize_car_object
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", deserialize_car_object),
 ]
