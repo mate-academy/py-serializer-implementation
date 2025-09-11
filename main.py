@@ -6,7 +6,7 @@ from car.serializers import CarSerializer
 
 def serialize_car_object(car: Car) -> bytes:
     serializer = CarSerializer(car)
-    return json.dumps(serializer.data, serializer=(",", ":")).encode("utf-8")
+    return json.dumps(serializer.data, separators=(",", ":")).encode("utf-8")
 
 
 def deserialize_car_object(json_data: bytes) -> Car:
@@ -15,4 +15,5 @@ def deserialize_car_object(json_data: bytes) -> Car:
     serializer.is_valid(raise_exception=True)
     car = Car(**serializer.validated_data)
     car.save()
-    return Car(**serializer.validated_data)
+    return car
+
