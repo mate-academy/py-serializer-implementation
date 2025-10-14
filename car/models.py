@@ -13,3 +13,4 @@ class Car(models.Model):
 
     def __str__(self):
         return f"{self.manufacturer}, {self.model}"
+
