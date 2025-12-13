@@ -1,13 +1,14 @@
 import json
 
+from rest_framework.renderers import JSONRenderer
+
 from car.models import Car
 from car.serializers import CarSerializer
 
 
 def serialize_car_object(car: Car) -> bytes:
     serializer = CarSerializer(instance=car)
-    json_str = json.dumps(serializer.data, separators=(",", ":"))
-    return json_str.encode("utf-8")
+    return JSONRenderer().render(serializer.data)
 
 
 def deserialize_car_object(car_json: bytes) -> Car:
