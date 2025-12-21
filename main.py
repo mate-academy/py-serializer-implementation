@@ -16,4 +16,4 @@ def deserialize_car_object(json: bytes) -> Car:
 
     serializer = CarSerializer(data=data)
     serializer.is_valid(raise_exception=True)
-    return Car(**serializer.validated_data)
+    return serializer.save()
