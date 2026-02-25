@@ -12,7 +12,7 @@ def serialize_car_object(car: Car) -> bytes:
 
 
 def deserialize_car_object(json: bytes) -> Car:
-    bits = BytesIO(json_bytes)
+    bits = BytesIO(json)
     data = JSONParser().parse(bits)
     serializer = CarSerializer(data=data)
     serializer.is_valid(raise_exception=True)
