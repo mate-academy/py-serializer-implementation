@@ -4,16 +4,21 @@ from rest_framework.parsers import JSONParser
 from car.serializers import CarSerializer
 
 
-def serialize_car_object(car_instance):
-    serializer = CarSerializer(car_instance)
+def serialize_car_object(car):
+    serializer = CarSerializer(car)
     return JSONRenderer().render(serializer.data)
 
 
 def deserialize_car_object(json_data):
-    stream = io.BytesIO(json_data)
-    data = JSONParser().parse(stream)
+    if isinstance(json_data, dict):
+        data = json_data
+    else:
+        if isinstance(json_data, str):
+            json_data = json_data.encode("utf-8")
+
+        stream = io.BytesIO(json_data)
+        data = JSONParser().parse(stream)
 
     serializer = CarSerializer(data=data)
     serializer.is_valid(raise_exception=True)
-
     return serializer.save()
