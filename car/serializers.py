@@ -10,4 +10,7 @@ class CarSerializer(serializers.Serializer):
         min_value=1,
     )
     is_broken = serializers.BooleanField()
-    problem_description = serializers.CharField(allow_null=True, required=False)
+    problem_description = serializers.CharField(
+        allow_null=True,
+        required=False,
+    )
