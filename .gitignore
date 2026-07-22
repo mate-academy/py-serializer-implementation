@@ -7,3 +7,44 @@ venv/
 .pytest_cache/
 **__pycache__/
 **db.sqlite3
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Test and coverage artifacts
+.coverage
+htmlcov/
+.tox/
+.noseids
+
+# VS Code settings
+*.code-workspace
+
+# Local dev env files
+.env.*
+.envrc
+*.local
+
+# Mac system files
+.DS_Store
+
+# Logs
+*.log
+
+# Sphinx documentation build
+docs/_build/
+
+# dist and build
+build/
+dist/
+*.egg-info/
+
+.venv/
+#
