@@ -6,7 +6,7 @@ class CarSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     manufacturer = serializers.CharField()
     model = serializers.CharField()
-    horse_rowers = serializers.IntegerField()
+    horse_powers = serializers.IntegerField()
     is_broken = serializers.BooleanField()
     problem_description = serializers.CharField(allow_blank=True)
 
