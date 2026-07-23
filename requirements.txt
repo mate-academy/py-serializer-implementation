@@ -14,3 +14,4 @@ pyflakes==3.4.0
 setuptools==82.0.1
 sqlparse==0.5.5
 tzdata==2026.1
+djangorestframework
