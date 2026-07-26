@@ -18,4 +18,4 @@ def deserialize_car_object(json: bytes) -> Car:
     car_dict = JSONParser().parse(stream)
     serializer = CarSerializer(data=car_dict)
     serializer.is_valid(raise_exception=True)
-    return Car(**serializer.validated_data)
+    return Car(**car_dict)
