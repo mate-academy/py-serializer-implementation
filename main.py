@@ -9,7 +9,7 @@ def serialize_car_object(car: Car) -> bytes:
     serializer = CarSerializer(car)
     json = JSONRenderer().render(serializer.data)
 
-    return  json
+    return json
 
 
 def deserialize_car_object(json: bytes) -> Car:
@@ -19,4 +19,4 @@ def deserialize_car_object(json: bytes) -> Car:
     serializer = CarSerializer(data)
     serializer.is_valid(raise_exception=True)
 
-    return  Car(**serializer.validated_data)
+    return Car(**serializer.validated_data)
