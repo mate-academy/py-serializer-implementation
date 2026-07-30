@@ -4,13 +4,13 @@ from car.models import Car
 
 
 class CarSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
+    id = serializers.IntegerField(required=False, allow_null=True)
     manufacturer = serializers.CharField(max_length=64)
     model = serializers.CharField(max_length=64)
     horse_powers = serializers.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(1914)])
     is_broken = serializers.BooleanField()
-    problem_description = serializers.CharField(required=False)
+    problem_description = serializers.CharField(required=False, allow_blank=True)
 
     def create(self, validated_data):
         return Car.objects.create(**validated_data)
