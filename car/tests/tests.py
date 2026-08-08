@@ -73,7 +73,7 @@ class TestSerializer(TestCase):
         self.serializer_data.pop("problem_description")
 
         serializer = CarSerializer(data=self.serializer_data)
-
+        print(self.serializer_data.get("id"))
         self.assertTrue(serializer.is_valid())
 
 
