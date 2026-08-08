@@ -101,7 +101,6 @@ class TestSerializerFunctions(TestCase):
                     b'"horse_powers":200,"is_broken":true,"problem_description":"test description"}'
 
         car = deserialize_car_object(json)
-
         for field in self.payload:
             with self.subTest(field):
                 self.assertEqual(getattr(car, field), self.payload[field])
