@@ -6,7 +6,7 @@ class Car(models.Model):
     manufacturer = models.CharField(max_length=64)
     model = models.CharField(max_length=64)
     horse_powers = models.PositiveSmallIntegerField(
-        validators=[MaxValueValidator(1914), MinValueValidator(1)]
+        validators=[MaxValueValidator(1500), MinValueValidator(1)]
     )
     is_broken = models.BooleanField()
     problem_description = models.TextField(null=True, blank=True)
